@@ -6,6 +6,8 @@ function start() {
 
   function selectColor(event) {
     let color = event.target.value;
+    console.log(color);
+    currentColor = color;
     hexToRgb(color);
   }
 
@@ -100,6 +102,19 @@ function start() {
       9}, ${s}%, ${l}%)`;
     document.querySelector(".box5").style.backgroundColor = `hsl(${h +
       18}, ${s}%, ${l}%)`;
+
+    document.querySelector(
+      ".container2 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container3 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container4 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container5 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
   }
 
   function setMonoChromatic(h, s, l) {
@@ -111,6 +126,19 @@ function start() {
       15}%)`;
     document.querySelector(".box5").style.background = `hsl(${h}, ${s}%, ${l -
       20}%)`;
+
+    document.querySelector(
+      ".container2 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container3 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container4 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container5 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
   }
 
   function setTriad(h, s, l) {
@@ -122,6 +150,19 @@ function start() {
       120}, ${s}%, ${l}%)`;
     document.querySelector(".box5").style.background = `hsl(${h -
       60}, ${s}%, ${l}%)`;
+
+    document.querySelector(
+      ".container2 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container3 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container4 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container5 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
   }
 
   function setComplementary(h, s, l) {
@@ -133,6 +174,19 @@ function start() {
       160}, ${s}%, ${l}%)`;
     document.querySelector(".box5").style.background = `hsl(${h -
       190}, ${s}%, ${l}%)`;
+
+    document.querySelector(
+      ".container2 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container3 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container4 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container5 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
   }
 
   function setCompound(h, s, l) {
@@ -144,6 +198,19 @@ function start() {
       150}, ${s}%, ${l}%)`;
     document.querySelector(".box5").style.background = `hsl(${h -
       180}, ${s}%, ${l - 10}%)`;
+
+    document.querySelector(
+      ".container2 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container3 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container4 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container5 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
   }
 
   function setShades(h, s, l) {
@@ -155,6 +222,19 @@ function start() {
       15}%, ${l}%)`;
     document.querySelector(".box5").style.background = `hsl(${h}, ${s -
       20}%, ${l - 10}%)`;
+
+    document.querySelector(
+      ".container2 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container3 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container4 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
+    document.querySelector(
+      ".container5 .txt .hsl-output"
+    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
   }
 
   function showColor(color, rgb, hsl) {
