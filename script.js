@@ -63,7 +63,6 @@ function start() {
     l *= 100;
 
     const hsl = `${Math.floor(h)}, ${Math.floor(s)}%, ${Math.floor(l)}%`;
-
     showSourceColor(color, rgb, hsl);
     convertColoHsl(2, hsl);
     convertColoHsl(3, hsl);
@@ -81,17 +80,60 @@ function start() {
 
     function showColor(id, h, s, l) {
       const colorId = id;
+      let boxValue = document.querySelector(`.container${colorId} .box`).style
+        .backgroundColor;
+
+      console.log(boxValue);
+
       document.querySelector(
         `.container${colorId} .box`
       ).style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
-      // document.querySelector(`.source-color .info .hex-output`).textContent = `HEX: ${color}`;
-      // document.querySelector(
-      //   `.container${colorId} .txt .rgb-output`
-      // ).textContent = box;
+      document.querySelector(
+        `.container${colorId} .txt .rgb-output`
+      ).textContent = boxValue;
       document.querySelector(
         `.container${colorId} .txt .hsl-output`
       ).innerHTML = `HSL: ${h}, ${s}, ${l}`;
+
+      rgbToHex(id, boxValue);
     }
+
+    function rgbToHex(colorId, boxValue) {
+      boxValue = boxValue.split(",");
+      console.log(boxValue);
+      let r = boxValue[0].slice(4, 7);
+      r = parseInt(r, 10);
+      let g = boxValue[1].slice(1, 4);
+      g = parseInt(r, 10);
+      let b = boxValue[1].slice(1, 4);
+      g = parseInt(b, 10);
+      let rgb = {};
+      rgb.r = r;
+      rgb.g = g;
+      rgb.b = b;
+      console.log(rgb);
+
+      let rgbToHex = function(rgb) {
+        let hex = Number(rgb).toString(16);
+        if (hex.length < 2) {
+          hex = "0" + hex;
+        }
+        return hex;
+      };
+
+      console.log(rgbToHex(r));
+
+      let colorHex = function(r, g, b) {
+        let red = rgbToHex(r);
+        let green = rgbToHex(g);
+        let blue = rgbToHex(b);
+        return red + green + blue;
+      };
+      document.querySelector(
+        `.container${colorId} .txt .hex-output`
+      ).textContent = `HEX: #${colorHex(r, g, b)}`;
+    }
+
     function convertColoHsl(num, hsl) {
       let id = num;
       hsl = hsl.split(" ");
@@ -112,7 +154,7 @@ function start() {
       }
       showColor(id, h, s, l);
       hslToRgb(h, s, l);
-      console.log(hslToRgb(h, s, l));
+      // console.log(hslToRgb(h, s, l));
     }
 
     function hslToRgb(h, s, l) {}
