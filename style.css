@@ -2,8 +2,19 @@
   margin: 0;
 }
 
+html {
+  background-color: #f5f5f5;
+}
+
 h1 {
   margin: 1em;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  text-decoration-line: underline;
+}
+
+.selector {
+  padding-left: 200px;
 }
 
 .selector .inner {
@@ -50,6 +61,7 @@ h1 {
 
 p {
   margin-top: 1em;
+  font-family: "Oswald", sans-serif;
 }
 
 .schemedropdown {

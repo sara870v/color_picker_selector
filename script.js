@@ -6,8 +6,6 @@ function start() {
 
   function selectColor(event) {
     let color = event.target.value;
-    console.log(color);
-    currentColor = color;
     hexToRgb(color);
   }
 
