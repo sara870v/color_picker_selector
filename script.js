@@ -64,183 +64,57 @@ function start() {
 
     const hsl = `${Math.floor(h)}, ${Math.floor(s)}%, ${Math.floor(l)}%`;
 
-    h = Math.round(h);
-    s = Math.round(s);
-    l = Math.round(l);
+    showSourceColor(color, rgb, hsl);
+    convertColoHsl(2, hsl);
+    convertColoHsl(3, hsl);
+    convertColoHsl(4, hsl);
+    convertColoHsl(5, hsl);
 
-    showColor(color, rgb, hsl);
-
-    if (document.querySelector("#color_picker").value == "analogous") {
-      setAnalogous(h, s, l);
-    } else if (
-      document.querySelector("#color_picker").value == "monochromatic"
-    ) {
-      setMonoChromatic(h, s, l);
-    } else if (document.querySelector("#color_picker").value == "triad") {
-      setTriad(h, s, l);
-    } else if (
-      document.querySelector("#color_picker").value == "complementary"
-    ) {
-      setComplementary(h, s, l);
-    } else if (document.querySelector("#color_picker").value == "compound") {
-      setCompound(h, s, l);
-    } else if (document.querySelector("#color_picker").value == "shades") {
-      setShades(h, s, l);
+    function showSourceColor(color, rgb, hsl) {
+      document.querySelector(".container1 .box").style.backgroundColor = color;
+      document.querySelector(".hex-output").textContent = `HEX: ${color}`;
+      document.querySelector(
+        ".rgb-output"
+      ).textContent = `RGB: ${rgb.r}, ${rgb.g}, ${rgb.b}`;
+      document.querySelector(".hsl-output").textContent = `HSL: ${hsl}`;
     }
-  }
 
-  function setAnalogous(h, s, l) {
-    console.log("hej");
+    function showColor(id, h, s, l) {
+      const colorId = id;
+      document.querySelector(
+        `.container${colorId} .box`
+      ).style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+      // document.querySelector(`.source-color .info .hex-output`).textContent = `HEX: ${color}`;
+      // document.querySelector(
+      //   `.container${colorId} .txt .rgb-output`
+      // ).textContent = box;
+      document.querySelector(
+        `.container${colorId} .txt .hsl-output`
+      ).innerHTML = `HSL: ${h}, ${s}, ${l}`;
+    }
+    function convertColoHsl(num, hsl) {
+      let id = num;
+      hsl = hsl.split(" ");
+      let h = hsl[0].slice(0, -1);
+      h = parseInt(h, 10);
+      let s = hsl[1].slice(0, -1);
+      s = parseInt(s, 10);
+      let l = hsl[2].slice(0, -1);
+      l = parseInt(l, 10);
+      if (id === 1) {
+        h = h - 60;
+      } else if (id === 2) {
+        h = h - 30;
+      } else if (id === 3) {
+        h = h += 9;
+      } else if (id === 4) {
+        h = h += 18;
+      }
+      showColor(id, h, s, l);
+      hslToRgb(h, s, l);
+      console.log(hslToRgb(h, s, l));
+    }
 
-    document.querySelector(".box2").style.backgroundColor = `hsl(${h -
-      60},${s}%,${l}%)`;
-    document.querySelector(".box3").style.backgroundColor = `hsl(${h -
-      30}, ${s}%, ${l}%)`;
-    document.querySelector(".box4").style.backgroundColor = `hsl(${h +
-      9}, ${s}%, ${l}%)`;
-    document.querySelector(".box5").style.backgroundColor = `hsl(${h +
-      18}, ${s}%, ${l}%)`;
-
-    document.querySelector(
-      ".container2 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container3 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container4 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container5 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-  }
-
-  function setMonoChromatic(h, s, l) {
-    document.querySelector(".box2").style.background = `hsl(${h}, ${s}%, ${l -
-      5}%)`;
-    document.querySelector(".box3").style.background = `hsl(${h}, ${s}%, ${l -
-      10}%)`;
-    document.querySelector(".box4").style.background = `hsl(${h}, ${s}%, ${l -
-      15}%)`;
-    document.querySelector(".box5").style.background = `hsl(${h}, ${s}%, ${l -
-      20}%)`;
-
-    document.querySelector(
-      ".container2 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container3 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container4 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container5 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-  }
-
-  function setTriad(h, s, l) {
-    document.querySelector(".box2").style.background = `hsl(${h -
-      60}, ${s}%, ${l}%)`;
-    document.querySelector(".box3").style.background = `hsl(${h -
-      120}, ${s}%, ${l}%)`;
-    document.querySelector(".box4").style.background = `hsl(${h -
-      120}, ${s}%, ${l}%)`;
-    document.querySelector(".box5").style.background = `hsl(${h -
-      60}, ${s}%, ${l}%)`;
-
-    document.querySelector(
-      ".container2 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container3 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container4 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container5 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-  }
-
-  function setComplementary(h, s, l) {
-    document.querySelector(".box2").style.background = `hsl(${h -
-      180}, ${s}%, ${l}%)`;
-    document.querySelector(".box3").style.background = `hsl(${h -
-      170}, ${s}%, ${l}%)`;
-    document.querySelector(".box4").style.background = `hsl(${h -
-      160}, ${s}%, ${l}%)`;
-    document.querySelector(".box5").style.background = `hsl(${h -
-      190}, ${s}%, ${l}%)`;
-
-    document.querySelector(
-      ".container2 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container3 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container4 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container5 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-  }
-
-  function setCompound(h, s, l) {
-    document.querySelector(".box2").style.background = `hsl(${h -
-      180}, ${s}%, ${l}%)`;
-    document.querySelector(".box3").style.background = `hsl(${h -
-      150}, ${s}%, ${l - 10}%)`;
-    document.querySelector(".box4").style.background = `hsl(${h +
-      150}, ${s}%, ${l}%)`;
-    document.querySelector(".box5").style.background = `hsl(${h -
-      180}, ${s}%, ${l - 10}%)`;
-
-    document.querySelector(
-      ".container2 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container3 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container4 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container5 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-  }
-
-  function setShades(h, s, l) {
-    document.querySelector(".box2").style.background = `hsl(${h}, ${s -
-      5}%, ${l}%)`;
-    document.querySelector(".box3").style.background = `hsl(${h}, ${s -
-      10}%, ${l - 10}%)`;
-    document.querySelector(".box4").style.background = `hsl(${h}, ${s -
-      15}%, ${l}%)`;
-    document.querySelector(".box5").style.background = `hsl(${h}, ${s -
-      20}%, ${l - 10}%)`;
-
-    document.querySelector(
-      ".container2 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container3 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container4 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-    document.querySelector(
-      ".container5 .txt .hsl-output"
-    ).innerHTML = `HSL: ${h} ${s}% ${l}%`;
-  }
-
-  function showColor(color, rgb, hsl) {
-    document.querySelector(".box1").style.backgroundColor = color;
-    document.querySelector(".hex-output").textContent = `HEX: ${color}`;
-    document.querySelector(
-      ".rgb-output"
-    ).textContent = `RGB: ${rgb.r}, ${rgb.g}, ${rgb.b}`;
-    document.querySelector(".hsl-output").textContent = `HSL: ${hsl}`;
+    function hslToRgb(h, s, l) {}
   }
 }
