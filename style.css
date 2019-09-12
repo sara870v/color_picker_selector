@@ -32,6 +32,10 @@ h3 {
   margin-bottom: 2em;
 }
 
+.container1 .box {
+  border: black 2px solid;
+}
+
 p {
   margin-top: 0.5em;
   padding-left: 0.1em;
